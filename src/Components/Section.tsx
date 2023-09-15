@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { useToggler } from "./TogglerProvider";
+import { useDogs } from "./DogProvider";
 
 export const Section = ({
   label,
@@ -8,6 +10,9 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
+  const { toggler, setToggler } = useToggler();
+  const { favoriteDogs, unfavoritedDogs } = useDogs();
+
   return (
     <section id="main-section">
       <div className="container-header">
@@ -15,27 +20,41 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${"active"}`}
+            className={`selector ${toggler === "favorited" ? "active" : ""}`}
             onClick={() => {
-              alert("click favorited");
+              if (toggler !== "favorited") {
+                setToggler("favorited");
+                return;
+              }
+              setToggler("all-dogs");
             }}
           >
-            favorited ( {0} )
+            favorited ( {favoriteDogs.length} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${""}`}
+            className={`selector ${toggler === "unfavorited" ? "active" : ""}`}
             onClick={() => {
-              alert("click unfavorited");
+              if (toggler !== "unfavorited") {
+                setToggler("unfavorited");
+                return;
+              }
+              setToggler("all-dogs");
             }}
           >
-            unfavorited ( {10} )
+            unfavorited ( {unfavoritedDogs.length} )
           </div>
           <div
-            className={`selector ${""}`}
+            className={`selector ${
+              toggler === "create-dog-form" ? "active" : ""
+            }`}
             onClick={() => {
-              alert("clicked create dog");
+              if (toggler !== "create-dog-form") {
+                setToggler("create-dog-form");
+                return;
+              }
+              setToggler("all-dogs");
             }}
           >
             create dog

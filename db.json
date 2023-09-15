@@ -32,7 +32,7 @@
       "name": "Violette",
       "image": "/src/assets/boxer.png",
       "description": "embrace Web Southwest perspiciatis though",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 6
     },
     {
@@ -46,14 +46,14 @@
       "name": "Asa",
       "image": "/src/assets/dalmation.png",
       "description": "Minivan Neither Road Movies radian",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 8
     },
     {
       "name": "Nicolas",
       "image": "/src/assets/chihuahua.avif",
       "description": "an Savings brink transmit card",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 9
     },
     {
@@ -109,7 +109,7 @@
       "name": "Meaghan",
       "image": "/src/assets/dalmation.png",
       "description": "lux Manager North applications Rufiyaa",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 17
     },
     {
