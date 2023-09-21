@@ -4,14 +4,14 @@
       "name": "Jonatan",
       "image": "/src/assets/boxer.png",
       "description": "Shoes after Dollar Marketing female generating Diesel",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 0
     },
     {
       "name": "Anthony",
       "image": "/src/assets/cowardly.png",
       "description": "plum Savings female Ghana programming solutions miniaturise",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 1
     },
     {
@@ -39,7 +39,7 @@
       "name": "Kenton",
       "image": "/src/assets/cowardly.png",
       "description": "Bedfordshire Human tempora Managed Electronic Directives Nissan expedite",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 7
     },
     {
@@ -60,15 +60,8 @@
       "name": "Elton",
       "image": "/src/assets/blue-heeler.png",
       "description": "Nihonium Electronic Nissan Metal because Computer white",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 10
-    },
-    {
-      "name": "Dewayne",
-      "image": "/src/assets/dalmation.png",
-      "description": "Security override firewall Southeast apropos Usability orchid barrel",
-      "isFavorite": false,
-      "id": 11
     },
     {
       "name": "Art",
@@ -125,6 +118,13 @@
       "description": "Planner maxime invoice ROI granular ouch Franc",
       "isFavorite": true,
       "id": 19
+    },
+    {
+      "name": "Courage",
+      "description": "Cowardly Dog",
+      "image": "/src/assets/cowardly.png",
+      "isFavorite": true,
+      "id": 20
     }
   ]
 }

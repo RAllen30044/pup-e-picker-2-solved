@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
 import { useDogs } from "./DogProvider";
+import toast from "react-hot-toast";
+
 export const CreateDogForm = () =>
   // no props allowed
   {
@@ -21,9 +23,14 @@ export const CreateDogForm = () =>
             description: descriptionInput,
             image: selectedImage,
             isFavorite: false,
-          });
-          setDescriptionInput("");
-          setNameInput("");
+          })
+            .then(() => {
+              setDescriptionInput("");
+              setNameInput("");
+            })
+            .catch(() => {
+              toast.error("Uh oh! Something is broken");
+            });
         }}
       >
         <h4>Create a New Dog</h4>

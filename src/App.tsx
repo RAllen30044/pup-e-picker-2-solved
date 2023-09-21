@@ -1,15 +1,15 @@
 import { Section } from "./Components/Section";
 import { CreateDogForm } from "./Components/CreateDogForm";
 import { Dogs } from "./Components/Dogs";
-import { useToggler } from "./Components/TogglerProvider";
+import { useActiveComponent } from "./Components/ActiveComponentProvider";
 
 export function App() {
-  const { toggler } = useToggler();
+  const { activeComponent } = useActiveComponent();
   const page = () => {
     return (
       <>
-        {toggler !== "create-dog-form" && <Dogs />}
-        {toggler === "create-dog-form" && <CreateDogForm />}
+        {activeComponent !== "create-dog-form" && <Dogs />}
+        {activeComponent === "create-dog-form" && <CreateDogForm />}
       </>
     );
   };

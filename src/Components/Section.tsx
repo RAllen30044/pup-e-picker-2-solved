@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useToggler } from "./TogglerProvider";
+import { useActiveComponent } from "./ActiveComponentProvider";
 import { useDogs } from "./DogProvider";
 
 export const Section = ({
@@ -10,7 +10,7 @@ export const Section = ({
   label: string;
   children: ReactNode;
 }) => {
-  const { toggler, setToggler } = useToggler();
+  const { activeComponent, SwitchActiveComponent } = useActiveComponent();
   const { favoriteDogs, unfavoritedDogs } = useDogs();
 
   return (
@@ -20,13 +20,11 @@ export const Section = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${toggler === "favorited" ? "active" : ""}`}
+            className={`selector ${
+              activeComponent === "favorited" ? "active" : ""
+            }`}
             onClick={() => {
-              if (toggler !== "favorited") {
-                setToggler("favorited");
-                return;
-              }
-              setToggler("all-dogs");
+              SwitchActiveComponent("favorited");
             }}
           >
             favorited ( {favoriteDogs.length} )
@@ -34,27 +32,21 @@ export const Section = ({
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${toggler === "unfavorited" ? "active" : ""}`}
+            className={`selector ${
+              activeComponent === "unfavorited" ? "active" : ""
+            }`}
             onClick={() => {
-              if (toggler !== "unfavorited") {
-                setToggler("unfavorited");
-                return;
-              }
-              setToggler("all-dogs");
+              SwitchActiveComponent("unfavorited");
             }}
           >
             unfavorited ( {unfavoritedDogs.length} )
           </div>
           <div
             className={`selector ${
-              toggler === "create-dog-form" ? "active" : ""
+              activeComponent === "create-dog-form" ? "active" : ""
             }`}
             onClick={() => {
-              if (toggler !== "create-dog-form") {
-                setToggler("create-dog-form");
-                return;
-              }
-              setToggler("all-dogs");
+              SwitchActiveComponent("create-dog-form");
             }}
           >
             create dog

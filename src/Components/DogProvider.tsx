@@ -1,4 +1,4 @@
-import { TDogProvider, Dog } from "../types";
+import { Dog } from "../types";
 import {
   ReactNode,
   createContext,
@@ -8,6 +8,18 @@ import {
 } from "react";
 import { Requests } from "../api";
 import { toast } from "react-hot-toast";
+import { TActiveComponent } from "./ActiveComponentProvider";
+
+export type TDogProvider = {
+  createDog: (dog: Omit<Dog, "id">) => Promise<unknown>;
+  isLoading: boolean;
+  // allDogs: Dog[];
+  deleteDog: (id: number) => void;
+  updateDog: (id: number, favorite: boolean) => void;
+  favoriteDogs: Dog[];
+  unfavoritedDogs: Dog[];
+  dogs: (activeComponent: TActiveComponent) => Dog[];
+};
 
 const DogContext = createContext<TDogProvider>({} as TDogProvider);
 
@@ -24,7 +36,7 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
 
   const createDog = (dog: Omit<Dog, "id">) => {
     setIsLoading(true);
-    Requests.postDog(dog)
+    return Requests.postDog(dog)
       .then(() => {
         fetchData().catch((err) => console.log(err));
       })
@@ -66,16 +78,28 @@ export const DogProvider = ({ children }: { children: ReactNode }) => {
       .catch((err) => console.log(err));
   };
 
+  const dogs = (activeComponent: TActiveComponent) => {
+    switch (activeComponent) {
+      case "favorited":
+        return favoriteDogs;
+
+      case "unfavorited":
+        return unfavoritedDogs;
+      default:
+        return allDogs;
+    }
+  };
+
   return (
     <DogContext.Provider
       value={{
-        allDogs,
+        favoriteDogs,
+        unfavoritedDogs,
         createDog,
         deleteDog,
         updateDog,
         isLoading,
-        favoriteDogs,
-        unfavoritedDogs,
+        dogs
       }}
     >
       {children}
